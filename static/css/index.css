@@ -25,3 +25,15 @@ body{
 .btn-bottom-margin{
     margin-bottom: 1em;
 }
+
+.residentsCol{
+    text-align: center;
+}
+
+table{
+    line-height: 1.2em !important;
+}
+
+.btn:not([disabled]):hover{
+    cursor: pointer;
+}
