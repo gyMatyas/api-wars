@@ -5,6 +5,7 @@ dom = {
     pagePlanets: null,
 
     createPlanetsTable: function (planets) {
+        dom.modalEventHandler();
         let tableHTML = `<thead>
                             <tr>
                                 <th>Name</th>
@@ -30,10 +31,10 @@ dom = {
                 tableHTML += `<td>${planets[i].population}</td>`
             }
             if (planets[i].residents.length > 0) {
-                tableHTML += `<td class="residentsCol"><button class="btn btn-dark" data-planetId="${i}">${planets[i].residents.length}</button></td>`
+                tableHTML += `<td class="residentsCol"><button class="btn btn-dark" data-planet="${i}" data-toggle="modal" data-target="#residentsModal">${planets[i].residents.length} residents</button></td>`
             }
             else {
-                tableHTML += '<td></td>'
+                tableHTML += '<td>No known residents</td>'
             }
             tableHTML += `</tr>`
         }
@@ -81,6 +82,18 @@ dom = {
     },
 
     getResidentsForPlanet: function (planetId) {
+        $('#modal-body').html(`<table id="modalTable" class=" table table-bordered table-responsive">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Height</th>
+                                        <th>Mass</th>
+                                        <th>Skin color</th>
+                                        <th>Hair color</th>
+                                        <th>Eye color</th>
+                                        <th>Birth year</th>
+                                        <th>Gender</th>
+                                    </tr>
+                                </table>`);
         for (let j = 0; j < dom.pagePlanets[planetId].residents.length; j++) {
             $.getJSON(`${dom.pagePlanets[planetId].residents[j]}`, function (resident) {
                 $('#modalTable').append(`<tr>
@@ -97,27 +110,15 @@ dom = {
         }
     },
 
-    getResidentAjaxCall: function (residentURL) {
-        var residentHTML = ""
-        $.ajax({
-            url: residentURL,
-            dataType: "json",
-            type: "GET"
-        }).done(
-            function (residentData) {
-                residentHTML =
-                    dom.residentsArray.push(residentHTML);
-            })
-    },
-
-
-    test: function () {
-        $.when(dom.getResidentsURLsForPlanet("0")).done(function () {
-            for (let i = 0; i < dom.residentURLArray.length; i++) {
-                dom.getResidentAjaxCall(dom.residentURLArray[i])
-
-            }
+    modalEventHandler: function () {
+        $('#residentsModal').off('show.bs.modal');
+        $('#residentsModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            console.log(button.data('planet'));
+            var planetId = parseInt(button.data('planet'));
+            dom.getResidentsForPlanet(planetId)
         });
     }
+
 
 }
