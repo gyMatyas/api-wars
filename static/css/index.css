@@ -21,3 +21,7 @@ body{
 .navbar-bottom-border{
     border-bottom: 1px solid yellow;
 }
+
+.btn-bottom-margin{
+    margin-bottom: 1em;
+}

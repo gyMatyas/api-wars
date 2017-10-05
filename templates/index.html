@@ -12,6 +12,8 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/dom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 
 <body>
@@ -43,6 +45,12 @@
 
     <div class="container">
         <h1>Star Wars universe planets</h1>
+
+        <button id="previous" class="btn btn-dark btn-bottom-margin">Previous</button>
+        <button id="next" class="btn btn-dark btn-bottom-margin">Next</button>
+
+        <table class="table table-bordered table-responsive" id="planetsTable">
+        </table>
     </div>
 </body>
 
