@@ -1,6 +1,7 @@
 import psycopg2
 import psycopg2.extras
 import werkzeug
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import urllib
 
