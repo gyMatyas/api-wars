@@ -19,11 +19,21 @@ dom = {
                         </thead>`;
         for (let i = 0; i < planets.length; i++) {
             tableHTML += `<tr id="planet-${i}">
-                            <td>${planets[i].name}</td>
-                            <td>${planets[i].diameter}</td>
-                            <td>${planets[i].climate}</td>
-                            <td>${planets[i].terrain}</td>
-                            <td>${planets[i].surface_water}</td>`
+                            <td>${planets[i].name}</td>`
+            if (planets[i].diameter !== "0") {
+                tableHTML += `<td>${planets[i].diameter} km</td>`
+            }
+            else {
+                tableHTML += `<td>Unknown</td>`
+            }
+            tableHTML += `<td>${planets[i].climate}</td >
+                          <td>${planets[i].terrain}</td>`
+            if (planets[i].surface_water !== 'unknown') {
+                tableHTML += `<td>${planets[i].surface_water} %</td>`
+            }
+            else {
+                tableHTML += `<td>${planets[i].surface_water}</td>`
+            }
             if (planets[i].population !== 'unknown') {
                 tableHTML += `<td>${parseInt(planets[i].population).toLocaleString()} people</td>`
             }
