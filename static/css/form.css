@@ -14,38 +14,20 @@ body{
     font-family: "STARWARS";
 }
 
-.container{
-    margin-top: 1em;
-}
-
-.navbar-bottom-border{
-    border-bottom: 1px solid yellow;
-}
-
-.btn-bottom-margin{
-    margin-bottom: 1em;
-}
-
-.residentsCol{
-    text-align: center;
-}
-
-table{
-    line-height: 1.2em !important;
-}
-
 .btn:not([disabled]):hover{
     cursor: pointer;
 }
 
-.modal-background{
-    background: #434343;
+input{
+    background: black!important;
+    border-color: #909000!important;
+    color: yellow !important;
 }
 
-.modalSpan{
-    color: yellow;
+input::-webkit-input-placeholder{
+    color: #909000!important;
 }
 
-.login-name{
-    text-align: center;
+.container{
+    margin-top: 1em;
 }

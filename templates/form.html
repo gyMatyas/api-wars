@@ -1,0 +1,42 @@
+<head>
+    <title>
+        API Wars - {{'Registration' if request.path=='/registration' else 'Login'}}
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+        {% if request.args.get('taken_username') %}
+        <p>Username already in use!</p>
+        {% endif %}
+        {% if request.args.get('invalid_credentials') %}
+        <p>Invalid credentials!</p>
+        {% endif %}
+        <form action="{{'/registration' if request.path=='/registration' else '/login'}}" method="post">
+            <div class="form-group">
+                <label class="form-control-label" for="formGroupExampleInput">Username</label>
+                <input type="text" class="form-control form-control mx-sm-3" id="formUsername" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword6">Password</label>
+                <input type="password" id="formPassword" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" name="password" required>                
+                {% if request.path=='/registration' %}
+                <small id="passwordHelpInline" class="text-muted">
+                    Must be 8-20 characters long.
+                </small> 
+                {% endif %}
+            </div>
+            <button class="btn btn-danger" type="submit">{{ 'Registration' if request.path=='/registration' else 'Login' }}</button>
+        </form>
+    </div>
+</body>

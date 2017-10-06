@@ -114,7 +114,6 @@ dom = {
         $('#residentsModal').off('show.bs.modal');
         $('#residentsModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            console.log(button.data('planet'));
             var planetId = parseInt(button.data('planet'));
             dom.getResidentsForPlanet(planetId)
         });
