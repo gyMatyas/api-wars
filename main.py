@@ -48,7 +48,8 @@ def route_logout():
     session.pop('username', None)
     return redirect(url_for('route_index'))
 
+app.secret_key = 'APIWARS-v1'
+
 
 if __name__ == "__main__":
-    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
     app.run(debug=True, host='''0.0.0.0''')
