@@ -52,6 +52,6 @@ def registrate_user(cursor, username, password):
 def login_user(cursor, username, password):
     cursor.execute("SELECT * FROM users WHERE username=%s", (username,))
     userdata = cursor.fetchone()
-    if werkzeug.security.check_password_hash(userdata['password'], password):
-        return True
+    if userdata:
+        return werkzeug.security.check_password_hash(userdata['password'], password)
     return False
