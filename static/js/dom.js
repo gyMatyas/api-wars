@@ -20,7 +20,7 @@ dom = {
         for (let i = 0; i < planets.length; i++) {
             tableHTML += `<tr id="planet-${i}">
                             <td>${planets[i].name}</td>`
-            if (planets[i].diameter !== "0" || planets[i].diameter !== 'unknown') {
+            if (planets[i].diameter !== 'unknown') {
                 tableHTML += `<td>${planets[i].diameter} km</td>`
             }
             else {
