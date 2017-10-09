@@ -20,12 +20,11 @@ dom = {
         for (let i = 0; i < planets.length; i++) {
             tableHTML += `<tr id="planet-${i}">
                             <td>${planets[i].name}</td>`;
-            console.log(typeof(planets[i].diameter));
-            if (planets[i].diameter !== 'unknown' || planets[i].diameter !== '0') {
-                tableHTML += `<td>${planets[i].diameter} km</td>`
+            if (planets[i].diameter === 'unknown' || planets[i].diameter === '0') {
+                tableHTML += `<td>unknown</td>`
             }
             else {
-                tableHTML += `<td>Unknown</td>`
+                tableHTML += `<td>${planets[i].diameter} km</td>`
             }
             tableHTML += `<td>${planets[i].climate}</td >
                           <td>${planets[i].terrain}</td>`
